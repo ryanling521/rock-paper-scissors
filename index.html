@@ -7,65 +7,68 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
-        // computer randomizes a shape
-        function computerPlay() {
-            let play = ["rock", "paper", "scissors"];
-            return play[Math.floor(Math.random() * play.length)];
-        }
-
-        // function plays one round
-        function playRound(playerSelection, computerSelection) {
-            if (playerSelection.toLowerCase() === computerSelection) {
-                return "tie";
-            }
-            else if ((playerSelection.toLowerCase() === "rock" && computerSelection === "scissors") || (playerSelection.toLowerCase() === "paper" && computerSelection === "rock") || (playerSelection.toLowerCase() === "scissors" && computerSelection === "paper")) {
-                return "you win";
-            }
-            else {
-                return "you lose";
-        }
-        }
-
-        // initialize win/loss counter
-        wins = 0;
-        loss = 0;
-
-        // play 5 rounds
-        for (let i = 0; i < 5; i++) {
-            let playerSelection = prompt("Please enter rock, paper, or scissors.");
-            if (playerSelection) {
-                let playerOne = playerSelection.toLowerCase();
-                if (playerOne === "rock" || playerOne === "paper" || playerOne === "scissors") {
-                    let computerOne = computerPlay();
-
-                    // log result
-                    console.log("You chose:", playerOne);
-                    console.log("Computer chose:", computerOne);
-                    console.log("Result:", playRound(playerOne,computerOne));
-                    
-                    // tally wins
-                    if (playRound(playerOne,computerOne) == "you win") {
-                        wins += 1;
-                    } else if (playRound(playerOne,computerOne) == "you lose") {
-                        loss += 1;
-                    } 
-                } else {
-                    alert("You didn't enter rock, paper, or scissors.");
-                }
-            } else {
-                alert("Don't try to exit >:(.")
-            }
-        }   
-
-        // log final result
-        if (wins > loss) {
-            console.log("You win this BO5!");
-        } else if (wins == loss) {
-            console.log("You tied this BO5!");
-        } else {
-            console.log("You lose this BO5!");
-        }
-    </script>
+    Play rock paper scissors with a computer! Press F12 if you are on windows and track your results in the console.
 </body>
+
+<script>
+    // computer randomizes a shape
+    function computerPlay() {
+        let play = ["rock", "paper", "scissors"];
+        return play[Math.floor(Math.random() * play.length)];
+    }
+
+    // function plays one round
+    function playRound(playerSelection, computerSelection) {
+        if (playerSelection.toLowerCase() === computerSelection) {
+            return "tie";
+        }
+        else if ((playerSelection.toLowerCase() === "rock" && computerSelection === "scissors") || (playerSelection.toLowerCase() === "paper" && computerSelection === "rock") || (playerSelection.toLowerCase() === "scissors" && computerSelection === "paper")) {
+            return "you win";
+        }
+        else {
+            return "you lose";
+    }
+    }
+
+    // initialize win/loss counter
+    wins = 0;
+    loss = 0;
+
+    // play 5 rounds
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt("Please enter rock, paper, or scissors.");
+        if (playerSelection) {
+            let playerOne = playerSelection.toLowerCase();
+            if (playerOne === "rock" || playerOne === "paper" || playerOne === "scissors") {
+                let computerOne = computerPlay();
+
+                // log result
+                console.log("You chose:", playerOne);
+                console.log("Computer chose:", computerOne);
+                console.log("Result:", playRound(playerOne,computerOne));
+                
+                // tally wins
+                if (playRound(playerOne,computerOne) == "you win") {
+                    wins += 1;
+                } else if (playRound(playerOne,computerOne) == "you lose") {
+                    loss += 1;
+                } 
+            } else {
+                alert("You didn't enter rock, paper, or scissors.");
+            }
+        } else {
+            alert("Don't try to exit >:(.")
+        }
+    }   
+
+    // log final result
+    if (wins > loss) {
+        console.log("You win this BO5!");
+    } else if (wins == loss) {
+        console.log("You tied this BO5!");
+    } else {
+        console.log("You lose this BO5!");
+    }
+</script>
+
 </html>
