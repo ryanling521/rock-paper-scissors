@@ -7,8 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    Play rock paper scissors with a computer! Press F12 if you are on windows and track your results in the console.
+    <h1>Play rock paper scissors with a computer! Press F12 if you are on windows and track your results in the console.</h1>
+    <button class="rock">rock</button>
+    <button class="paper">paper</button>
+    <button class="scissors">scissors</button>
 </body>
+
 
 <script>
     // computer randomizes a shape
@@ -34,41 +38,123 @@
     wins = 0;
     loss = 0;
 
-    // play 5 rounds
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Please enter rock, paper, or scissors.");
-        if (playerSelection) {
-            let playerOne = playerSelection.toLowerCase();
-            if (playerOne === "rock" || playerOne === "paper" || playerOne === "scissors") {
-                let computerOne = computerPlay();
+    // dom manipulation - add div
+    const body = document.body;
+    const div = document.createElement('div');
+    const div2 = document.createElement('div');
+    const div3 = document.createElement('div');
+    const div4 = document.createElement('div');
+    const div5 = document.createElement('div');
+    const div6 = document.createElement('div');
 
-                // log result
-                console.log("You chose:", playerOne);
-                console.log("Computer chose:", computerOne);
-                console.log("Result:", playRound(playerOne,computerOne));
-                
-                // tally wins
-                if (playRound(playerOne,computerOne) == "you win") {
-                    wins += 1;
-                } else if (playRound(playerOne,computerOne) == "you lose") {
-                    loss += 1;
-                } 
-            } else {
-                alert("You didn't enter rock, paper, or scissors.");
-            }
-        } else {
-            alert("Don't try to exit >:(.")
-        }
-    }   
+    const finalResults = document.createElement('div');
+    
 
-    // log final result
-    if (wins > loss) {
-        console.log("You win this BO5!");
-    } else if (wins == loss) {
-        console.log("You tied this BO5!");
-    } else {
-        console.log("You lose this BO5!");
-    }
+    let computerOne = computerPlay();
+
+
+    // event listener - click button and shows results in console
+    const rock = document.querySelector('.rock');
+    const paper = document.querySelector('.paper');
+    const scissors = document.querySelector('.scissors');
+
+    rock.addEventListener('click', function () {
+        // adds results
+        div.textContent = playRound('rock',computerOne);
+        body.append(div);
+
+        // remove previous results
+        div2.remove();
+        div3.remove();
+
+        // tallys wins
+        if (playRound('rock',computerOne) == "you win") {
+            wins += 1;
+        } else if (playRound('rock',computerOne) == "you lose") {
+            loss += 1;
+        } 
+        div5.textContent = 'wins: ' + wins;
+        div6.textContent = 'loss: ' + loss;
+
+        body.append(div5);
+        body.append(div6);
+
+        // final winner
+        if ((wins >= 5) && (wins > loss)) {
+            finalResults.textContent = "You win this B05";
+            body.append(finalResults);
+        } else if (loss >= 5 && (loss > wins)) {
+            finalResults.textContent = "You lose this BO5!";
+            body.append(finalResults);
+        } 
+
+    });
+
+    paper.addEventListener('click', function () {
+        // adds results
+        div2.textContent = playRound('paper',computerOne);
+        body.append(div2);
+
+        // remove previous results
+        div3.remove();
+        div.remove();
+
+        // tallys wins
+        if (playRound('paper',computerOne) == "you win") {
+            wins += 1;
+        } else if (playRound('paper',computerOne) == "you lose") {
+            loss += 1;
+        } 
+        div5.textContent = 'wins: ' + wins;
+        div6.textContent = 'loss: ' + loss;
+
+        body.append(div5);
+        body.append(div6);
+
+        // final winner
+        if ((wins >= 5) && (wins > loss)) {
+            finalResults.textContent = "You win this B05";
+            body.append(finalResults);
+        } else if (loss >= 5 && (loss > wins)) {
+            finalResults.textContent = "You lose this BO5!";
+            body.append(finalResults);
+        } 
+    });
+
+    scissors.addEventListener('click', function () {
+        // adds results
+        div3.textContent = playRound('scissors',computerOne);
+        body.append(div3);
+
+        // remove previous results
+        div.remove();
+        div2.remove();
+
+        // tallys wins
+        if (playRound('scissors',computerOne) == "you win") {
+            wins += 1;
+        } else if (playRound('scissors',computerOne) == "you lose") {
+            loss += 1;
+        } 
+        div5.textContent = 'wins: ' + wins;
+        div6.textContent = 'loss: ' + loss;
+
+        body.append(div5);
+        body.append(div6);
+
+        // final winner
+        if ((wins >= 5) && (wins > loss)) {
+        finalResults.textContent = "You win this B05";
+        body.append(finalResults);
+        } else if (loss >= 5 && (loss > wins)) {
+        finalResults.textContent = "You lose this BO5!";
+        body.append(finalResults);
+        } 
+    });
+ 
+
+
+
 </script>
 
 </html>
