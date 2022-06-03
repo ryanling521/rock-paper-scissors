@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>Play rock paper scissors with a computer! Press F12 if you are on windows and track your results in the console.</h1>
-    <button class="rock">rock</button>
-    <button class="paper">paper</button>
-    <button class="scissors">scissors</button>
+    <h1>Let's see if you can beat a computer at rock paper scissors! Click the buttons below.</h1>
+    <div class="buttons">
+        <button class="rock">rock</button>
+        <button class="paper">paper</button>
+        <button class="scissors">scissors</button>
+    </div>  
 </body>
 
 
@@ -46,20 +49,21 @@
     const div4 = document.createElement('div');
     const div5 = document.createElement('div');
     const div6 = document.createElement('div');
+    const div7 = document.createElement('div');
+
 
     const finalResults = document.createElement('div');
     
-
-    let computerOne = computerPlay();
-
-
     // event listener - click button and shows results in console
     const rock = document.querySelector('.rock');
     const paper = document.querySelector('.paper');
     const scissors = document.querySelector('.scissors');
-
+    
     rock.addEventListener('click', function () {
         // adds results
+        let computerOne = computerPlay();
+        div7.textContent = "computer chose: " + computerOne;
+        body.append(div7);
         div.textContent = playRound('rock',computerOne);
         body.append(div);
 
@@ -92,6 +96,9 @@
 
     paper.addEventListener('click', function () {
         // adds results
+        let computerOne = computerPlay();
+        div7.textContent = "computer chose: " + computerOne;
+        body.append(div7);
         div2.textContent = playRound('paper',computerOne);
         body.append(div2);
 
@@ -123,6 +130,9 @@
 
     scissors.addEventListener('click', function () {
         // adds results
+        let computerOne = computerPlay();
+        div7.textContent = "computer chose: " + computerOne;
+        body.append(div7);
         div3.textContent = playRound('scissors',computerOne);
         body.append(div3);
 
